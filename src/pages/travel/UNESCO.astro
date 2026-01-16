@@ -1,0 +1,256 @@
+---
+const pageTitle = "世界遗产足迹";
+const subtitle = "按国家整理 · 同一国家内按列入名录时间排序";
+
+const sites = [
+  {
+    country: "中国",
+    items: [
+      { name: "泰山", year: "1987" },
+      { name: "秦始皇陵及兵马俑坑", year: "1987" },
+      { name: "明清故宫（北京故宫、沈阳故宫）", year: "1987, 2004" },
+      { name: "承德避暑山庄及其周围寺庙", year: "1994" },
+      { name: "丽江古城", year: "1997" },
+      { name: "苏州古典园林", year: "1997, 2000" },
+      { name: "大足石刻", year: "1999" },
+      { name: "明清皇家陵寝", year: "2000, 2003, 2004" },
+      { name: "龙门石窟", year: "2000" },
+      { name: "云岗石窟", year: "2001" },
+      { name: "云南三江并流保护区", year: "2003" },
+      { name: "中国南方喀斯特", year: "2007, 2014" },
+      { name: "中国丹霞", year: "2010" },
+      { name: "杭州西湖文化景观", year: "2011" },
+      { name: "大运河", year: "2014" },
+      { name: "良渚古城遗址", year: "2019" },
+      { name: "北京中轴线：中国理想都城秩序的杰作", year: "2024" },
+    ],
+  },
+  {
+    country: "乌兹别克斯坦",
+    items: [
+      { name: "伊钦•卡拉内城", year: "1990" },
+      { name: "布哈拉历史中心", year: "1993" },
+      { name: "沙赫利苏伯兹历史中心", year: "2000" },
+      { name: "处在文化十字路口的撒马尔罕城", year: "2001" },
+    ],
+  },
+  {
+    country: "印度尼西亚",
+    items: [
+      { name: "婆罗浮屠寺庙群", year: "1991" },
+      { name: "普兰巴南寺庙群", year: "1991" },
+      { name: "巴厘岛的文化景观：苏巴克灌溉系统", year: "2012" },
+      { name: "日惹的宇宙中轴线及其历史地标", year: "2023" },
+    ],
+  },
+  {
+    country: "哈萨克斯坦",
+    items: [
+      { name: "霍贾•艾哈迈德•亚萨维陵墓", year: "2003" },
+      { name: "丝绸之路：长安-天山的路网走廊", year: "2014" },
+      { name: "西部天山", year: "2016" },
+    ],
+  },
+  {
+    country: "日本",
+    items: [
+      { name: "姬路城", year: "1993" },
+      { name: "法隆寺地区的佛教古迹", year: "1993" },
+      { name: "古京都遗址（京都、宇治和大津城）", year: "1994" },
+      { name: "古奈良的历史遗迹", year: "1998" },
+      { name: "日光神殿和庙宇", year: "1999" },
+      { name: "富士山：圣地与艺术灵感的源泉", year: "2013" },
+      { name: "柯布西耶的建筑作品：对现代运动的杰出致敬", year: "2016" },
+      { name: "百舌鸟和古市古坟群：古日本墓葬群", year: "2019" },
+    ],
+  },
+  {
+    country: "柬埔寨",
+    items: [{ name: "吴哥窟", year: "1992" }],
+  },
+  {
+    country: "老挝",
+    items: [{ name: "琅勃拉邦的古城", year: "1995" }],
+  },
+];
+
+const countryCount = sites.length;
+const itemCount = sites.reduce((s, c) => s + c.items.length, 0);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-text">
+          <div class="kicker">旅行日志</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+
+          <div class="meta-row">
+            <span class="meta-pill">国家 {countryCount}</span>
+            <span class="meta-pill">条目 {itemCount}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <ol class="grid">
+          {sites.map((c, idx) => (
+            <li class="card">
+              <div class="badge">{idx + 1}</div>
+
+              <div class="body">
+                <div class="name-row">
+                  <div class="province-name">{c.country}</div>
+                  <div class="chips">
+                    <span class="chip">{c.items.length} 条</span>
+                  </div>
+                </div>
+
+                <div class="items">
+                  {c.items.map((it) => `${it.name}（${it.year}）`).join("；")}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      :root{
+        --bg:#fff;
+        --card:#f5f5f5;
+        --chip-bg:#fff;
+        --chip-border:#e7e7e7;
+        --border:#e5e5e5;
+        --ink:#111;
+        --muted:#777;
+        --muted2:#666;
+      }
+
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .page{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 40px 20px 70px;
+      }
+
+      .top-actions{ display:flex; justify-content:flex-start; margin-bottom:16px; }
+      .back-home{
+        text-decoration:none;
+        font-size:14px;
+        padding:6px 10px;
+        border-radius:10px;
+        color: var(--muted);
+      }
+      .back-home:hover{ background:#f0f0f0; color: var(--ink); }
+
+      .hero{ margin-top: 4px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size: clamp(34px, 5vw, 54px); margin: 8px 0 0; }
+      .subtitle{ color: var(--muted); margin-top: 10px; }
+
+      .meta-row{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+      .meta-pill{
+        font-size:12px;
+        color:#555;
+        background:#fafafa;
+        border:1px solid var(--border);
+        padding:6px 10px;
+        border-radius:999px;
+      }
+
+      .panel{ margin-top: 28px; }
+
+      .grid{
+        list-style:none;
+        padding:0;
+        display:grid;
+        gap:10px;
+      }
+
+      .card{
+        display:grid;
+        grid-template-columns:56px 1fr;
+        gap:14px;
+        padding:14px;
+        background: var(--card);
+        border-radius:14px;
+      }
+
+      .badge{
+        font-weight:700;
+        opacity:.85;
+        line-height:1;
+        padding-top:2px;
+      }
+
+      .body{ display:grid; gap:10px; min-width:0; }
+
+      .name-row{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        min-width:0;
+      }
+
+      .province-name{
+        font-weight:650;
+        font-size:16px;
+        min-width:0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+
+      .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+      .chip{
+        font-size:12px;
+        color:#555;
+        background: var(--chip-bg);
+        border:1px solid var(--chip-border);
+        padding:4px 8px;
+        border-radius:999px;
+      }
+
+      .items{
+        color:#333;
+        line-height:1.75;
+        word-break: break-word;
+      }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid var(--border);
+        text-align:center;
+        color: var(--muted);
+        font-size:14px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,338 @@
+---
+const pageTitle = "世界足迹";
+const subtitle = "国家与城市 · 旅行片段与记忆";
+
+// 国家与城市（字段名保持 province/cities，不动模板）
+const trips = [
+  { province: "柬埔寨", cities: ["暹粒"] },
+  { province: "老挝", cities: ["万象", "琅勃拉邦"] },
+  {
+    province: "日本",
+    cities: [
+      "东京",
+      "镰仓",
+      "京都",
+      "富士山周边",
+      "奈良",
+      "大阪",
+      "神户",
+      "有马",
+      "日光",
+      "姬路",
+    ],
+  },
+  { province: "印度尼西亚", cities: ["雅加达", "巴厘岛", "泗水", "日惹"] },
+  { province: "乌兹别克斯坦", cities: ["塔什干", "希瓦", "布哈拉", "撒马尔罕","沙赫里萨布兹"] },
+  { province: "哈萨克斯坦", cities: ["阿拉木图及周边地区", "突厥斯坦", "奇姆肯特"] },
+];
+
+// ✅ 照片等你补：统一放到底部（原图呈现：不裁切）
+// ✅ 照片等你补补：统一放到底部（原图呈现：不裁切）
+const gallery = [
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3623.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3611.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3658.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/DSC07524.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/B2E2B6FF-3A79-499F-85FE-896BC214F2D0.JPG" },
+  { province: "日本", caption: "奈良", src: "/IMG_9259.JPG" },
+  { province: "日本", caption: "奈良", src: "/IMG_9255.JPG" },
+  { province: "日本", caption: "京都", src: "/IMG_9096.JPG" },
+  { province: "日本", caption: "京都", src: "/IMG_9062.JPG" },
+  { province: "日本", caption: "京都", src: "/IMG_8967.JPG" },
+  { province: "日本", caption: "京都", src: "/IMG_8902.JPG" },
+  { province: "老挝", caption: "琅勃拉邦", src: "/IMG_3365.JPG" },
+  { province: "印度尼西亚", caption: "泗水", src: "/IMG_0652.JPG" },
+  { province: "印度尼西亚", caption: "泗水", src: "/IMG_0126.JPG" },
+  { province: "印度尼西亚", caption: "日惹", src: "/IMG_0385.JPG" },
+  { province: "印度尼西亚", caption: "日惹", src: "/IMG_0788.JPG" },
+  { province: "老挝", caption: "琅勃拉邦", src: "/IMG_3284.JPG" },
+  { province: "老挝", caption: "琅勃拉邦", src: "/IMG_3312.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3741.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3584.JPG" },
+  { province: "哈萨克斯坦", caption: "阿拉木图周边地区", src: "/IMG_3598.JPG" },
+
+  { province: "乌兹别克斯坦", caption: "布哈拉", src: "/IMG_4009.JPG" },
+  { province: "乌兹别克斯坦", caption: "布哈拉", src: "/IMG_4033.JPG" },
+  { province: "乌兹别克斯坦", caption: "布哈拉", src: "/IMG_4195.JPG" },
+  { province: "乌兹别克斯坦", caption: "撒马尔罕", src: "/IMG_4197.JPG" },
+  { province: "乌兹别克斯坦", caption: "撒马尔罕", src: "/IMG_4229.JPG" },
+  { province: "乌兹别克斯坦", caption: "沙赫里萨布兹", src: "/IMG_4267.JPG" },
+
+  { province: "日本", caption: "富士山地区", src: "/IMG_8375.JPG" },
+  { province: "日本", caption: "富士山地区", src: "/IMG_8460.JPG" },
+  { province: "日本", caption: "东京", src: "/IMG_8572.JPG" },
+  { province: "日本", caption: "镰仓", src: "/IMG_8622.JPG" },
+  { province: "日本", caption: "日光", src: "/IMG_8712.JPG" },
+
+  { province: "乌兹别克斯坦", caption: "希瓦", src: "/乌兹别克斯坦·希瓦.JPG" },
+  { province: "日本", caption: "京都", src: "/369dc8d291fadd058dd356a4bf125690.JPG" },
+  { province: "日本", caption: "镰仓", src: "/50e8fc9e4cc0945184245b2461c7f371.JPG" },
+
+  { province: "老挝", caption: "琅勃拉邦", src: "/IMG_3326.JPG" },
+  { province: "日本", caption: "姬路", src: "/IMG_9413.JPG" },
+
+  { province: "柬埔寨", caption: "暹粒", src: "/IMG_0213.JPG" },
+  { province: "柬埔寨", caption: "暹粒", src: "/IMG_0250.JPG" },
+  { province: "柬埔寨", caption: "暹粒", src: "/IMG_0375.JPG" },
+];
+
+
+// 统计
+const provinceCount = trips.length;
+const cityCount = trips.reduce((s, t) => s + t.cities.length, 0);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-text">
+          <div class="kicker">旅行日志</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+
+          <div class="meta-row">
+            <span class="meta-pill">国家/地区 {provinceCount}</span>
+            <span class="meta-pill">城市 {cityCount}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <ol class="grid">
+          {trips.map((t, idx) => (
+            <li class="card">
+              <div class="badge">{idx + 1}</div>
+
+              <div class="body">
+                <div class="name-row">
+                  <div class="province-name">{t.province}</div>
+                  <div class="chips">
+                    <span class="chip">{t.cities.length} 城市</span>
+                  </div>
+                </div>
+
+                <div class="cities">{t.cities.join("、")}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ✅ 全部照片统一放最底下 */}
+      <section class="panel gallery-panel">
+        <div class="gallery-head">
+          <div class="gallery-title">照片</div>
+          <div class="gallery-sub">原图呈现 · 按画册方式排布</div>
+        </div>
+
+        <div class="gallery">
+          {gallery.map((p) => (
+            <figure class="shot">
+              <img src={p.src} alt={p.caption} loading="lazy" />
+              <figcaption class="cap">{p.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      :root{
+        --bg:#fff;
+        --card:#f5f5f5;
+        --chip-bg:#fff;
+        --chip-border:#e7e7e7;
+        --border:#e5e5e5;
+        --ink:#111;
+        --muted:#777;
+        --muted2:#666;
+        --shadow: rgba(0,0,0,0.06);
+      }
+
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .page{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 40px 20px 70px;
+      }
+
+      .top-actions{ display:flex; justify-content:flex-start; margin-bottom:16px; }
+      .back-home{
+        text-decoration:none;
+        font-size:14px;
+        padding:6px 10px;
+        border-radius:10px;
+        color: var(--muted);
+      }
+      .back-home:hover{ background:#f0f0f0; color: var(--ink); }
+
+      .hero{ margin-top: 4px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size: clamp(34px, 5vw, 54px); margin: 8px 0 0; }
+      .subtitle{ color: var(--muted); margin-top: 10px; }
+
+      .meta-row{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+      .meta-pill{
+        font-size:12px;
+        color:#555;
+        background:#fafafa;
+        border:1px solid var(--border);
+        padding:6px 10px;
+        border-radius:999px;
+      }
+
+      .panel{ margin-top: 28px; }
+
+      .grid{
+        list-style:none;
+        padding:0;
+        display:grid;
+        gap:10px;
+      }
+
+      .card{
+        display:grid;
+        grid-template-columns:56px 1fr;
+        gap:14px;
+        padding:14px;
+        background: var(--card);
+        border-radius:14px;
+      }
+
+      .badge{
+        font-weight:700;
+        opacity:.85;
+        line-height:1;
+        padding-top:2px;
+      }
+
+      .body{ display:grid; gap:10px; min-width:0; }
+
+      .name-row{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        min-width:0;
+      }
+
+      .province-name{
+        font-weight:650;
+        font-size:16px;
+        min-width:0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+
+      .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+      .chip{
+        font-size:12px;
+        color:#555;
+        background: var(--chip-bg);
+        border:1px solid var(--chip-border);
+        padding:4px 8px;
+        border-radius:999px;
+      }
+
+      .cities{ color:#333; line-height:1.65; }
+
+      /* ===== 底部画册式相册 ===== */
+      .gallery-panel{
+        background: var(--card);
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .gallery-head{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        padding: 2px 2px 10px;
+      }
+
+      .gallery-title{
+        font-weight:650;
+        font-size:16px;
+      }
+
+      .gallery-sub{
+        font-size:12px;
+        color: var(--muted);
+      }
+
+      .gallery{
+        column-count: 2;
+        column-gap: 10px;
+      }
+
+      .shot{
+        margin: 0 0 10px;
+        display: inline-block;
+        width: 100%;
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 22px var(--shadow);
+        break-inside: avoid;
+      }
+
+      .shot img{
+        width: 100%;
+        height: auto;
+        display:block;
+        object-fit: contain;
+        background: #fff;
+      }
+
+      .cap{
+        padding: 10px 12px 12px;
+        font-size: 12px;
+        color: var(--muted2);
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+
+      @media (max-width: 860px){
+        .gallery{ column-count: 1; }
+      }
+
+      @media (max-width: 520px){
+        .card{ grid-template-columns:44px 1fr; }
+        .gallery-head{ flex-direction:column; align-items:flex-start; gap:6px; }
+      }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid var(--border);
+        text-align:center;
+        color: var(--muted);
+        font-size:14px;
+      }
+    </style>
+  </body>
+</html>

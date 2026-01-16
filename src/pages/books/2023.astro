@@ -1,0 +1,147 @@
+---
+const year = "2023";
+
+const books = [
+  "【德国】君特·格拉斯《铁皮鼓》（2006上海译文出版社）",
+  "【秘鲁】马里奥·巴里加斯·略萨《潘达雷昂上尉和劳军女郎》（2009人民文学出版社）",
+  "【白俄罗斯】S.A.阿列克谢耶维奇《切尔诺贝利的祭祷》（2018中信出版社）",
+  "【匈牙利】凯尔泰斯·伊姆雷《无命运的人生》（2010译林出版社）",
+  "【法国】安妮·埃尔诺《悠悠岁月》（2021人民文学出版社）",
+  "【哥伦比亚】加西亚·马尔克斯《族长的秋天》（2014南海出版公司）",
+  "【南非】J.M.库切《耻》（2010译林出版社）",
+  "【哥伦比亚】加西亚·马尔克斯《梦中的欢快葬礼和十二个异乡故事》（2015南海出版公司）",
+  "【英国】V.S.奈保尔《大河湾》（2014南海出版公司）",
+  "【美国】露易丝·格丽克《直到世界反映了灵魂最深层的需要》（2016上海人民出版社）",
+  "【英国】乔治·奥威尔《动物农场》（2007上海译文出版社）",
+  "【英国】弗吉尼亚·伍尔夫《一间只属于自己的房间》（2019天津人民出版社）",
+  "【哥伦比亚】加西亚·马尔克斯《世上最美的溺水者》（2015南海出版公司）",
+  "【奥地利】彼得·汉德克《骂观众》（2013上海人民出版社）",
+  "【哥伦比亚】加西亚·马尔克斯 / P.A.门多萨《番石榴飘香》（2015南海出版公司）",
+  "【英国】V.S.奈保尔《米格尔街》（2013南海出版公司）",
+  "【美国】约翰·斯坦贝克《人鼠之间》（2016上海文艺出版社）",
+  "【美国】迈克尔·坎宁安《时时刻刻》（2012人民文学出版社）",
+  "【中国】余秀华《月光落在左手上》（2020北京十月文艺出版社）",
+  "【奥地利】埃尔夫丽德·耶利内克《钢琴教师》（2005北京十月文艺出版社）",
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{year} · 年度书单</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <a href="/" class="back-home">← 返回主页</a>
+
+      <header class="hero">
+        <div class="kicker">年度书单</div>
+        <h1 class="title">{year}</h1>
+        <p class="subtitle">阅读记录与推荐</p>
+      </header>
+
+      <section class="panel">
+        <ol class="list">
+          {books.map((item) => (
+            <li class="card">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="text">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      .page { max-width: 980px; margin: 0 auto; padding: 56px 20px 72px; }
+      .hero { margin-bottom: 26px; }
+      .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+      .title { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+      .subtitle { margin: 12px 0 0; font-size: 16px; line-height: 1.7; opacity: 0.72; }
+
+      .panel {
+        margin-top: 22px;
+        border-radius: 18px;
+        padding: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+      .card {
+        display: grid;
+        grid-template-columns: 10px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(0,0,0,0.18);
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255,255,255,0.16);
+        background: rgba(0,0,0,0.26);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        margin-top: 8px;
+        background: rgba(255,255,255,0.55);
+      }
+
+      .text {
+        font-size: 16px;
+        line-height: 1.85;
+        opacity: 0.92;
+        word-break: break-word;
+      }
+
+      .footnote {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255,255,255,0.10);
+        opacity: 0.75;
+      }
+
+      .line { font-size: 14px; letter-spacing: 0.02em; }
+
+      .back-home{
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #777;
+        padding: 6px 10px;
+        border-radius: 10px;
+        transition: background 120ms ease, color 120ms ease;
+      }
+
+      .back-home:hover{
+        background: #f0f0f0;
+        color: #111;
+      }
+
+      @media (max-width: 520px) {
+        .page { padding: 42px 16px 60px; }
+        .panel { padding: 12px; }
+        .card { padding: 12px; border-radius: 12px; }
+        .text { font-size: 15px; line-height: 1.8; }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+---
+const year = "2024";
+
+const books = [
+  "【秘鲁】马里奥·巴里加斯·略萨《公羊的节日》（2021人民文学出版社）",
+  "【土耳其】奥尔罕·帕慕克《我的名字叫红》（2016上海人民出版社）",
+  "【秘鲁】马里奥·巴里加斯·略萨《酒吧长谈》（2021人民文学出版社）",
+  "【韩国】韩江《少年来了》（2018漫游者文化）",
+  "【日本】大江健三郎《万延元年的足球队》（1996光明日报出版社）",
+  "【美国】托妮·莫里森《宠儿》（2013南海出版公司）",
+  "【韩国】韩江《素食者》（2021四川文艺出版社）",
+  "【伊朗】阿巴斯·基亚罗斯塔米《一只狼在放哨》（2017中信出版社）",
+  "【南非】纳丁·戈迪默《偶遇者》（2015漓江出版社）",
+  "【加拿大】艾丽丝·门罗《逃离》（2016北京十月文艺出版社）",
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{year} · 年度书单</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <a href="/" class="back-home">← 返回主页</a>
+
+      <header class="hero">
+        <div class="kicker">年度书单</div>
+        <h1 class="title">{year}</h1>
+        <p class="subtitle">阅读记录与推荐</p>
+      </header>
+
+      <section class="panel">
+        <ol class="list">
+          {books.map((item) => (
+            <li class="card">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="text">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      .page { max-width: 980px; margin: 0 auto; padding: 56px 20px 72px; }
+      .hero { margin-bottom: 26px; }
+      .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+      .title { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+      .subtitle { margin: 12px 0 0; font-size: 16px; line-height: 1.7; opacity: 0.72; }
+
+      .panel {
+        margin-top: 22px;
+        border-radius: 18px;
+        padding: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+      .card {
+        display: grid;
+        grid-template-columns: 10px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(0,0,0,0.18);
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255,255,255,0.16);
+        background: rgba(0,0,0,0.26);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        margin-top: 8px;
+        background: rgba(255,255,255,0.55);
+      }
+
+      .text {
+        font-size: 16px;
+        line-height: 1.85;
+        opacity: 0.92;
+        word-break: break-word;
+      }
+
+      .footnote {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255,255,255,0.10);
+        opacity: 0.75;
+      }
+
+      .line { font-size: 14px; letter-spacing: 0.02em; }
+
+      .back-home{
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #777;
+        padding: 6px 10px;
+        border-radius: 10px;
+        transition: background 120ms ease, color 120ms ease;
+      }
+
+      .back-home:hover{
+        background: #f0f0f0;
+        color: #111;
+      }
+
+      @media (max-width: 520px) {
+        .page { padding: 42px 16px 60px; }
+        .panel { padding: 12px; }
+        .card { padding: 12px; border-radius: 12px; }
+        .text { font-size: 15px; line-height: 1.8; }
+      }
+    </style>
+  </body>
+</html>

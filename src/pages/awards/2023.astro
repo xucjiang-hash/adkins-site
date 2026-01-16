@@ -1,0 +1,320 @@
+---
+const pageTitle = "第二届 Brian-Adkins Award";
+const subtitle = "获奖与年度观影推荐";
+
+// 海报（你已放到 public/joyland.jpg）
+const heroImg = "/joyland.jpg";
+
+// ---------------------------
+// 1) 获奖名单
+// ---------------------------
+const awards = [
+  {
+    section: "金果奖",
+    items: [
+      { label: "最佳影片", value: "《乐土》" },
+      { label: "终身成就（荣誉金果）", value: "史蒂文·斯皮尔伯格 / 朱丽安·摩尔" },
+    ],
+  },
+  {
+    section: "银果奖",
+    items: [
+      { label: "评审团大奖", value: "《瞬息全宇宙》" },
+      { label: "评委会奖", value: "《阿尔卡拉斯》" },
+      { label: "最佳导演", value: "朴赞郁（《分手的决心》）" },
+      { label: "最佳新人导演", value: "塞姆·萨迪克（《乐土》）" },
+    ],
+  },
+  {
+    section: "地平线奖",
+    items: [
+      { label: "最佳动画片", value: "《青春变形记》" },
+      { label: "最佳纪录片", value: "《火山挚恋》" },
+      { label: "最佳国际影片", value: "《乐土》" },
+      { label: "人道主义精神奖", value: "《乐土》" },
+      { label: "费比西奖", value: "《晒后假日》" },
+      { label: "酷儿电影荣誉特别提及", value: "《乐土》" },
+    ],
+  },
+  {
+    section: "史蒂芬妮杯",
+    items: [
+      { label: "最佳男主角", value: "科林·法瑞尔（《伊尼舍林的报丧女妖》）" },
+      { label: "最佳男配角", value: "关继威（《瞬息全宇宙》）" },
+      { label: "最佳女主角", value: "汤唯（《分手的决心》）" },
+      { label: "最佳女配角", value: "杰米·李·柯蒂斯（《瞬息全宇宙》）" },
+    ],
+  },
+  {
+    section: "编剧大奖",
+    items: [
+      { label: "最佳原创剧本", value: "《伊尼舍林的报丧女妖》" },
+      { label: "最佳改编剧本", value: "《西线无战事》" },
+    ],
+  },
+  {
+    section: "金摄影机奖",
+    items: [
+      { label: "最佳摄影", value: "《隐入尘烟》" },
+      { label: "最佳剪辑", value: "《瞬息全宇宙》" },
+    ],
+  },
+  {
+    section: "视觉大奖",
+    items: [
+      { label: "最佳视觉效果", value: "《阿凡达：水之道》" },
+      { label: "最佳艺术指导", value: "《隐入尘烟》" },
+      { label: "最佳化妆与发型设计", value: "《瞬息全宇宙》" },
+      { label: "最佳服装设计", value: "《瞬息全宇宙》" },
+    ],
+  },
+  {
+    section: "听觉大奖",
+    items: [
+      { label: "最佳声音效果", value: "《阿凡达：水之道》" },
+      { label: "最佳原创配乐", value: "《壮志凌云2：独行侠》" },
+      { label: "最佳原创歌曲", value: "Lady Gaga《Hold My Hand》<br />（《壮志凌云2：独行侠》）" },
+    ],
+  },
+];
+
+// ---------------------------
+// 2) 一种关注：国产院线特别贡献单元
+// ---------------------------
+const specialFocus = {
+  title: "一种关注：国产院线特别贡献单元",
+  rows: [
+    { label: "年度关注电影", value: "《隐入尘烟》《狙击手》" },
+    { label: "年度关注导演", value: "李睿珺" },
+    { label: "年度关注演员", value: "海清" },
+  ],
+};
+
+// ---------------------------
+// 3) 主竞赛入围名单暨年度观影推荐
+// ---------------------------
+const shortlistIntro = {
+  title: "主竞赛入围名单暨年度观影推荐",
+  range: "选片范围：2022年中国大陆院线上映电影及2022年发行的全球各国电影",
+};
+
+const shortlist = [
+  { country: "美国", director: "达米恩·查泽雷", title: "《巴比伦》" },
+  { country: "中国香港", director: "何爵天", title: "《正义回廊》" },
+  { country: "德国", director: "爱德华·贝尔格", title: "《西线无战事》" },
+  { country: "法国", director: "米夏埃尔·艾斯", title: "《巴黎夜旅人》" },
+  { country: "美国", director: "彼得·法雷里", title: "《有史以来最棒的啤酒运送》" },
+  { country: "美国", director: "萨拉·多萨", title: "《火山挚恋》" },
+  { country: "加拿大", director: "汪英伦", title: "《一场很（没）有必要的春晚》" },
+  { country: "波兰", director: "杰兹·斯科利莫夫斯基", title: "《驴叫》" },
+  { country: "加拿大", director: "詹姆斯·卡梅隆", title: "《阿凡达：水之道》" },
+  { country: "巴基斯坦", director: "塞姆·萨迪克", title: "《乐土》" },
+  { country: "比利时", director: "卢卡斯·德霍特", title: "《亲密》" },
+  { country: "英国", director: "夏洛特·威尔斯", title: "《晒后假日》" },
+  { country: "瑞典", director: "鲁本·奥斯特伦德", title: "《悲情三角》" },
+  { country: "德国", director: "马蒂·格肖内克", title: "《万湖会议》" },
+  { country: "美国", director: "朗·霍华德", title: "《十三条命》" },
+  { country: "韩国", director: "朴赞郁", title: "《分手的决心》" },
+  { country: "爱尔兰", director: "马丁·麦克唐纳", title: "《伊尼舍林的报丧女妖》" },
+  { country: "西班牙", director: "卡拉·西蒙", title: "《阿尔卡拉斯》" },
+  { country: "美国", director: "大卫·雷奇", title: "《子弹列车》" },
+  { country: "美国", director: "史蒂文·斯皮尔伯格", title: "《造梦之家》" },
+  { country: "韩国", director: "洪常秀", title: "《小说家的电影》" },
+  { country: "美国", director: "关家永 / 丹尼尔·施耐特", title: "《瞬息全宇宙》" },
+  { country: "中国大陆", director: "李睿珺", title: "《隐入尘烟》" },
+  { country: "英国", director: "苏菲·海德", title: "《祝你好运，里奥·格兰德》" },
+  { country: "美国", director: "约瑟夫·科辛斯基", title: "《壮志凌云2：独行侠》" },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-img">
+          <img src={heroImg} alt={pageTitle} />
+        </div>
+
+        <div class="hero-text">
+          <div class="kicker">Brian-Adkins Awards</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+        </div>
+      </header>
+
+      {/* 竖排布局：获奖名单 -> 入围名单 */}
+      <section class="stack">
+        {/* 获奖名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">获奖名单</h2>
+          </div>
+
+          <div class="award-grid">
+            {awards.map((block) => (
+              <section class="card">
+                <h3 class="card-title">{block.section}</h3>
+                <div class="kv">
+                  {block.items.map((it) => (
+                    <div class="kv-row">
+                      <div class="kv-k">{it.label}</div>
+                      <div class="kv-v" title={it.value} set:html={it.value} />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{specialFocus.title}</h3>
+            <div class="kv">
+              {specialFocus.rows.map((r) => (
+                <div class="kv-row">
+                  <div class="kv-k">{r.label}</div>
+                  <div class="kv-v" title={r.value}>{r.value}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* 入围名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">主竞赛名单</h2>
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{shortlistIntro.title}</h3>
+            <div class="muted">{shortlistIntro.range}</div>
+
+            <ol class="pick-list">
+              {shortlist.map((p, idx) => (
+                <li class="pick-item">
+                  <span class="pick-no">{idx + 1}.</span>
+                  <span class="pick-main" title={`【${p.country}】${p.director}${p.title}`}>
+                    <span class="pick-country">【{p.country}】</span>
+                    <span class="pick-text">{p.director}{p.title}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      body{ margin:0; font-family: system-ui,"PingFang SC","Microsoft YaHei",sans-serif; background:#fff; color:#111; }
+      .page{ max-width:980px; margin:0 auto; padding:40px 20px 70px; }
+
+      .top-actions{ display:flex; justify-content:space-between; margin-bottom:16px; }
+      .back-home{ text-decoration:none; font-size:14px; padding:6px 10px; border-radius:10px; color:#777; }
+      .back-home:hover{ background:#f0f0f0; color:#111; }
+
+      .hero-img img{ width:100%; border-radius:16px; border:1px solid #e5e5e5; display:block; }
+      .hero-text{ margin-top:20px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size:clamp(34px,5vw,54px); margin:8px 0 0; }
+      .subtitle{ color:#777; margin-top:10px; }
+
+      .stack{ margin-top:26px; display:grid; grid-template-columns: 1fr; gap:14px; }
+
+      .panel{ background:#f6f6f6; border-radius:18px; padding:16px; }
+      .panel-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px; }
+      .panel-title{ margin:0; font-size:18px; letter-spacing:.02em; }
+
+      .award-grid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:12px;
+      }
+      @media (max-width: 860px){
+        .award-grid{ grid-template-columns:1fr; }
+      }
+
+      .card{
+        background:#fff;
+        border:1px solid #e8e8e8;
+        border-radius:14px;
+        padding:14px;
+      }
+      .card.wide{ margin-top:12px; }
+
+      .card-title{
+        margin:0 0 10px;
+        font-size:18px;
+        font-weight:750;
+        letter-spacing:.01em;
+      }
+
+      .kv{ display:grid; gap:8px; }
+      .kv-row{
+        display:grid;
+        grid-template-columns: 130px 1fr;
+        gap:12px;
+        align-items:baseline;
+      }
+      .kv-k{ color:#666; font-size:13px; white-space:nowrap; }
+      .kv-v{
+        color:#111;
+        font-size:13px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+
+      .muted{ color:#777; font-size:13px; margin-top:2px; }
+
+      .pick-list{
+        margin:12px 0 0;
+        padding:0;
+        list-style:none;
+        display:grid;
+        gap:10px;
+      }
+      .pick-item{
+        display:grid;
+        grid-template-columns: 34px 1fr;
+        gap:8px;
+        align-items:baseline;
+      }
+      .pick-no{ font-weight:700; color:#111; }
+      .pick-main{
+        font-size:14px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      .pick-country{ color:#666; margin-right:6px; }
+      .pick-text{ color:#111; }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid #e5e5e5;
+        text-align:center;
+        color:#777;
+        font-size:14px;
+      }
+      .footnote .line{ display:block; }
+      .footnote .line.muted{ margin-top:6px; color:#999; }
+    </style>
+  </body>
+</html>

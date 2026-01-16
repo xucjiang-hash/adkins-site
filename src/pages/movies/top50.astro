@@ -1,0 +1,127 @@
+---
+const pageTitle = "21世纪华语电影 Top 50";
+const subtitle = "个人精选 · 2000至今";
+
+const films = [
+  { rank: 1, title: "三峡好人", director: "贾樟柯", year: 2006 },
+  { rank: 2, title: "一一", director: "杨德昌", year: 2000 },
+  { rank: 3, title: "卧虎藏龙", director: "李安", year: 2000 },
+  { rank: 4, title: "天注定", director: "贾樟柯", year: 2013 },
+  { rank: 5, title: "色，戒", director: "李安", year: 2007 },
+  { rank: 6, title: "站台", director: "贾樟柯", year: 2000 },
+  { rank: 7, title: "鬼子来了", director: "姜文", year: 2000 },
+  { rank: 8, title: "天水围的日与夜", director: "许鞍华", year: 2008 },
+  { rank: 9, title: "赛德克·巴莱", director: "魏德圣", year: 2012 },
+  { rank: 10, title: "大象席地而坐", director: "胡波", year: 2018 },
+  { rank: 11, title: "颐和园", director: "娄烨", year: 2006 },
+  { rank: 12, title: "大佛普拉斯", director: "黄信尧", year: 2017 },
+  { rank: 13, title: "地久天长", director: "王小帅", year: 2019 },
+  { rank: 14, title: "岁月神偷", director: "罗启锐", year: 2010 },
+  { rank: 15, title: "英雄", director: "张艺谋", year: 2002 },
+  { rank: 16, title: "让子弹飞", director: "姜文", year: 2010 },
+  { rank: 17, title: "蓝宇", director: "关锦鹏", year: 2001 },
+  { rank: 18, title: "孔雀", director: "顾长卫", year: 2005 },
+  { rank: 19, title: "千禧曼波", director: "侯孝贤", year: 2001 },
+  { rank: 20, title: "宇宙探索编辑部", director: "孔大山", year: 2021 },
+  { rank: 21, title: "李米的猜想", director: "曹保平", year: 2008 },
+  { rank: 22, title: "我们天上见", director: "蒋雯丽", year: 2009 },
+  { rank: 23, title: "盲山", director: "李杨", year: 2007 },
+  { rank: 24, title: "暴裂无声", director: "忻钰坤", year: 2017 },
+  { rank: 25, title: "你那边几点", director: "蔡明亮", year: 2001 },
+  { rank: 26, title: "江湖儿女", director: "贾樟柯", year: 2018 },
+  { rank: 27, title: "阳光普照", director: "钟孟宏", year: 2019 },
+  { rank: 28, title: "万箭穿心", director: "王竞", year: 2012 },
+  { rank: 29, title: "大腕", director: "冯小刚", year: 2001 },
+  { rank: 30, title: "路边野餐", director: "毕赣", year: 2015 },
+  { rank: 31, title: "山河故人", director: "贾樟柯", year: 2015 },
+  { rank: 32, title: "盲井", director: "李杨", year: 2003 },
+  { rank: 33, title: "师父", director: "徐浩峰", year: 2015 },
+  { rank: 34, title: "不散", director: "蔡明亮", year: 2003 },
+  { rank: 35, title: "一代宗师", director: "王家卫", year: 2013 },
+  { rank: 36, title: "立春", director: "顾长卫", year: 2007 },
+  { rank: 37, title: "苏州河", director: "娄烨", year: 2000 },
+  { rank: 38, title: "四个春天", director: "陆庆屹", year: 2017 },
+  { rank: 39, title: "南方车站的聚会", director: "刁亦男", year: 2019 },
+  { rank: 40, title: "刺客聂隐娘", director: "侯孝贤", year: 2015 },
+  { rank: 41, title: "遥望南方的童年", director: "易寒", year: 2007 },
+  { rank: 42, title: "花样年华", director: "王家卫", year: 2000 },
+  { rank: 43, title: "烈日灼心", director: "曹保平", year: 2015 },
+  { rank: 44, title: "斗牛", director: "管虎", year: 2009 },
+  { rank: 45, title: "疯狂的石头", director: "宁浩", year: 2006 },
+  { rank: 46, title: "钢的琴", director: "张猛", year: 2010 },
+  { rank: 47, title: "春风沉醉的夜晚", director: "娄烨", year: 2009 },
+  { rank: 48, title: "归来", director: "张艺谋", year: 2014 },
+  { rank: 49, title: "投名状", director: "陈可辛", year: 2007 },
+  { rank: 50, title: "榴莲飘飘", director: "陈果", year: 2000 },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-img">
+          <img src="/SXHR.jpg" alt="21世纪华语电影 Top 50" />
+        </div>
+
+        <div class="hero-text">
+          <div class="kicker">电影榜单</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <ol class="grid">
+          {films.map((f) => (
+            <li class="card">
+              <div class="badge">{String(f.rank).padStart(2, "0")}</div>
+              <div>
+                <div class="film-title">{f.title}</div>
+                <div class="meta">{f.director} · {f.year}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      body{ margin:0; font-family: system-ui,"PingFang SC","Microsoft YaHei",sans-serif; background:#fff; color:#111; }
+      .page{ max-width:980px; margin:0 auto; padding:40px 20px 70px; }
+      .top-actions{ display:flex; justify-content:flex-start; margin-bottom:16px; }
+      .back-home,.back-muted{ text-decoration:none; font-size:14px; padding:6px 10px; border-radius:10px; color:#777; }
+      .back-home:hover,.back-muted:hover{ background:#f0f0f0; color:#111; }
+
+      .hero-img img{ width:100%; border-radius:14px; border:1px solid #e5e5e5; }
+      .hero-text{ margin-top:20px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size:clamp(34px,5vw,54px); margin:8px 0 0; }
+      .subtitle{ color:#777; margin-top:10px; }
+
+      .panel{ margin-top:28px; }
+      .grid{ list-style:none; padding:0; display:grid; gap:10px; }
+      .card{ display:grid; grid-template-columns:56px 1fr; gap:14px; padding:14px; background:#f5f5f5; border-radius:14px; }
+      .badge{ font-weight:700; }
+      .film-title{ font-weight:600; }
+      .meta{ color:#666; font-size:13px; margin-top:6px; }
+
+      .footnote{ margin-top:30px; padding-top:18px; border-top:1px solid #e5e5e5; text-align:center; color:#777; font-size:14px; }
+    </style>
+  </body>
+</html>

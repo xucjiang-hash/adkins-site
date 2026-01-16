@@ -1,0 +1,339 @@
+---
+const pageTitle = "第三届 Brian-Adkins Award";
+const subtitle = "获奖与年度观影推荐";
+
+// 海报（你已放到 public/killers.webp）
+const heroImg = "/killers.webp";
+
+// ---------------------------
+// 1) 获奖名单
+// ---------------------------
+const awards = [
+  {
+    section: "金果奖",
+    items: [
+      { label: "最佳影片", value: "《花月杀手》" },
+      { label: "终身成就（荣誉金果）", value: "侯孝贤 / 罗伯特·德尼罗" },
+    ],
+  },
+  {
+    section: "银果奖",
+    items: [
+      { label: "评审团大奖", value: "《可怜的东西》" },
+      { label: "评委会奖", value: "《闭上眼睛》" },
+      { label: "最佳导演", value: "马丁·斯科塞斯（《花月杀手》）" },
+      { label: "最佳新人导演", value: "范天安（《金色茧房》）" },
+    ],
+  },
+  {
+    section: "地平线奖",
+    items: [
+      { label: "最佳动画片", value: "《机器人之梦》" },
+      { label: "最佳纪录片", value: "《德黑兰七冬》" },
+      { label: "最佳国际影片", value: "《怪物》" },
+      { label: "人道主义精神奖", value: "《德黑兰七冬》" },
+      { label: "费比西奖", value: "《怪物》" },
+      { label: "酷儿电影荣誉特别提及", value: "《怪物》" },
+    ],
+  },
+  {
+    section: "史蒂芬妮杯",
+    items: [
+      { label: "最佳男主角", value: "基里安·墨菲（《奥本海默》）" },
+      { label: "最佳男配角", value: "马克·鲁法洛（《可怜的东西》）" },
+      { label: "最佳女主角", value: "艾玛·斯通（《可怜的东西》）" },
+      { label: "最佳女配角", value: "朱利安·摩尔（《五月十二月》）" },
+    ],
+  },
+  {
+    section: "编剧大奖",
+    items: [
+      { label: "最佳原创剧本", value: "《怪物》" },
+      { label: "最佳改编剧本", value: "《美国小说》" },
+    ],
+  },
+  {
+    section: "金摄影机奖",
+    items: [
+      { label: "最佳摄影", value: "《金色茧房》" },
+      { label: "最佳剪辑", value: "《奥本海默》" },
+    ],
+  },
+  {
+    section: "视觉大奖",
+    items: [
+      { label: "最佳视觉效果", value: "《拿破仑》" },
+      { label: "最佳艺术指导", value: "《拿破仑》" },
+      { label: "最佳化妆与发型设计", value: "《可怜的东西》" },
+      { label: "最佳服装设计", value: "《可怜的东西》" },
+    ],
+  },
+  {
+    section: "听觉大奖",
+    items: [
+      { label: "最佳声音效果", value: "《奥本海默》" },
+      { label: "最佳原创配乐", value: "《奥本海默》" },
+      { label: "最佳原创歌曲", value: "Billie Eilish《What Was I Made For?》<br />（《芭比》）" },
+    ],
+  },
+];
+
+// ---------------------------
+// 2) 一种关注：国产院线特别贡献单元
+// ---------------------------
+const specialFocus = {
+  title: "一种关注：国产院线特别贡献单元",
+  rows: [
+    {
+      label: "年度关注电影",
+      value:
+        "《流浪地球2》《长安三万里》《满江红》《河边的错误》《宇宙探索编辑部》《脐带》《涉过愤怒的海》《三大队》《年会不能停》",
+    },
+    { label: "年度关注导演", value: "魏书钧" },
+    { label: "年度关注演员", value: "周冬雨" },
+  ],
+};
+
+// ---------------------------
+// 3) 主竞赛入围名单暨年度观影推荐
+// ---------------------------
+const shortlistIntro = {
+  title: "主竞赛入围名单暨年度观影推荐",
+  range: "选片范围：2023年中国大陆院线上映电影及2023年发行的全球各国电影",
+};
+
+const shortlist = [
+  { country: "泰国", director: "阿彼察邦·韦拉斯哈古", title: "《记忆》" },
+  { country: "中国大陆", director: "孔大山", title: "《宇宙探索编辑部》" },
+  { country: "墨西哥", director: "亚历杭德罗·戈麦斯·蒙特维尔德", title: "《自由之声》" },
+  { country: "法国", director: "茹斯汀·特里耶", title: "《坠落的审判》" },
+  { country: "美国", director: "马丁·斯科塞斯", title: "《花月杀手》" },
+  { country: "加拿大", director: "席琳·宋", title: "《过往人生》" },
+  { country: "智利", director: "帕布罗·拉雷恩", title: "《伯爵》" },
+  { country: "英国", director: "克里斯托弗·诺兰", title: "《奥本海默》" },
+  { country: "美国", director: "格蕾塔·葛韦格", title: "《芭比》" },
+  { country: "美国", director: "乔伊姆·桑托斯 / 凯普·鲍尔斯 / 贾斯汀·汤普森", title: "《蜘蛛侠：纵横宇宙》" },
+  { country: "美国", director: "伊丽莎白·柴·瓦沙瑞莉 / 金国威", title: "《奈德》" },
+  { country: "德国", director: "克里斯托弗·佩措尔德", title: "《红色天空》" },
+  { country: "德国", director: "施特菲·尼德奥尔", title: "《德黑兰七冬》" },
+  { country: "德国", director: "欧凯·查塔克", title: "《教师休息室》" },
+  { country: "中国大陆", director: "王兵", title: "《青春》" },
+  { country: "美国", director: "托德·海因斯", title: "《五月十二月》" },
+  { country: "德国", director: "维姆·文德斯", title: "《完美的日子》" },
+  { country: "中国大陆", director: "魏书钧", title: "《河边的错误》" },
+  { country: "美国", director: "亚历山大·佩恩", title: "《留校联盟》" },
+  { country: "中国大陆", director: "乔思雪", title: "《脐带》" },
+  { country: "波兰", director: "阿格涅斯·霍兰", title: "《绿色边境》" },
+  { country: "罗马尼亚", director: "拉杜·裘德", title: "《不要太期待世界末日》" },
+  { country: "爱沙尼亚", director: "安娜·亨兹", title: "《桑拿房的女性私语》" },
+  { country: "西班牙", director: "巴勃罗·贝格尔", title: "《机器人之梦》" },
+  { country: "英国", director: "乔·拜尔德", title: "《俄罗斯方块》" },
+  { country: "意大利", director: "马提欧·加洛尼", title: "《我是船长》" },
+  { country: "越南", director: "范天安", title: "《金色茧房》" },
+  { country: "丹麦", director: "尼科莱·阿尔塞", title: "《杂种》" },
+  { country: "西班牙", director: "维克多·艾里斯", title: "《闭上眼睛》" },
+  { country: "芬兰", director: "阿基·考里斯马基", title: "《枯叶》" },
+  { country: "英国", director: "安德鲁·海格", title: "《都是陌生人》" },
+  { country: "美国", director: "柯德·杰弗森", title: "《美国小说》" },
+  { country: "日本", director: "是枝裕和", title: "《怪物》" },
+  { country: "中国大陆", director: "曹保平", title: "《涉过愤怒的海》" },
+  { country: "法国", director: "尼古拉·菲利伯特", title: "《坚毅之旅》" },
+  { country: "希腊", director: "欧格斯·兰斯莫斯", title: "《可怜的东西》" },
+  { country: "英国", director: "乔纳森·格雷泽", title: "《利益区域》" },
+  { country: "日本", director: "宫崎骏", title: "《你想活出怎样的人生》" },
+  { country: "中国大陆", director: "戴墨", title: "《三大队》" },
+  { country: "韩国", director: "金成洙", title: "《首尔之春》" },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-img">
+          <img src={heroImg} alt={pageTitle} />
+        </div>
+
+        <div class="hero-text">
+          <div class="kicker">Brian-Adkins Awards</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+        </div>
+      </header>
+
+      {/* 竖排布局：获奖名单 -> 入围名单 */}
+      <section class="stack">
+        {/* 获奖名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">获奖名单</h2>
+          </div>
+
+          <div class="award-grid">
+            {awards.map((block) => (
+              <section class="card">
+                <h3 class="card-title">{block.section}</h3>
+                <div class="kv">
+                  {block.items.map((it) => (
+                    <div class="kv-row">
+                      <div class="kv-k">{it.label}</div>
+                      <div class="kv-v" title={it.value} set:html={it.value} />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{specialFocus.title}</h3>
+            <div class="kv">
+              {specialFocus.rows.map((r) => (
+                <div class="kv-row">
+                  <div class="kv-k">{r.label}</div>
+                  <div class="kv-v" title={r.value}>{r.value}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* 入围名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">主竞赛名单</h2>
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{shortlistIntro.title}</h3>
+            <div class="muted">{shortlistIntro.range}</div>
+
+            <ol class="pick-list">
+              {shortlist.map((p, idx) => (
+                <li class="pick-item">
+                  <span class="pick-no">{idx + 1}.</span>
+                  <span class="pick-main" title={`【${p.country}】${p.director}${p.title}`}>
+                    <span class="pick-country">【{p.country}】</span>
+                    <span class="pick-text">{p.director}{p.title}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      body{ margin:0; font-family: system-ui,"PingFang SC","Microsoft YaHei",sans-serif; background:#fff; color:#111; }
+      .page{ max-width:980px; margin:0 auto; padding:40px 20px 70px; }
+
+      .top-actions{ display:flex; justify-content:space-between; margin-bottom:16px; }
+      .back-home{ text-decoration:none; font-size:14px; padding:6px 10px; border-radius:10px; color:#777; }
+      .back-home:hover{ background:#f0f0f0; color:#111; }
+
+      .hero-img img{ width:100%; border-radius:16px; border:1px solid #e5e5e5; display:block; }
+      .hero-text{ margin-top:20px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size:clamp(34px,5vw,54px); margin:8px 0 0; }
+      .subtitle{ color:#777; margin-top:10px; }
+
+      .stack{ margin-top:26px; display:grid; grid-template-columns: 1fr; gap:14px; }
+
+      .panel{ background:#f6f6f6; border-radius:18px; padding:16px; }
+      .panel-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px; }
+      .panel-title{ margin:0; font-size:18px; letter-spacing:.02em; }
+
+      .award-grid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:12px;
+      }
+      @media (max-width: 860px){
+        .award-grid{ grid-template-columns:1fr; }
+      }
+
+      .card{
+        background:#fff;
+        border:1px solid #e8e8e8;
+        border-radius:14px;
+        padding:14px;
+      }
+      .card.wide{ margin-top:12px; }
+
+      .card-title{
+        margin:0 0 10px;
+        font-size:18px;
+        font-weight:750;
+        letter-spacing:.01em;
+      }
+
+      .kv{ display:grid; gap:8px; }
+      .kv-row{
+        display:grid;
+        grid-template-columns: 130px 1fr;
+        gap:12px;
+        align-items:baseline;
+      }
+      .kv-k{ color:#666; font-size:13px; white-space:nowrap; }
+      .kv-v{
+        color:#111;
+        font-size:13px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+
+      .muted{ color:#777; font-size:13px; margin-top:2px; }
+
+      .pick-list{
+        margin:12px 0 0;
+        padding:0;
+        list-style:none;
+        display:grid;
+        gap:10px;
+      }
+      .pick-item{
+        display:grid;
+        grid-template-columns: 34px 1fr;
+        gap:8px;
+        align-items:baseline;
+      }
+      .pick-no{ font-weight:700; color:#111; }
+      .pick-main{
+        font-size:14px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      .pick-country{ color:#666; margin-right:6px; }
+      .pick-text{ color:#111; }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid #e5e5e5;
+        text-align:center;
+        color:#777;
+        font-size:14px;
+      }
+      .footnote .line{ display:block; }
+      .footnote .line.muted{ margin-top:6px; color:#999; }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,314 @@
+---
+const pageTitle = "国内足迹";
+const subtitle = "省份与城市 · 旅行片段与记忆";
+
+// 省市（河南补上洛阳）
+const trips = [
+  { province: "上海市", cities: ["上海"] },
+  { province: "北京市", cities: ["北京"] },
+  { province: "天津市", cities: ["天津"] },
+  { province: "重庆市", cities: ["重庆"] },
+
+  { province: "江苏省", cities: ["苏州"] },
+
+  { province: "海南省", cities: ["海口", "万宁"] },
+  { province: "陕西省", cities: ["西安", "渭南"] },
+  { province: "辽宁省", cities: ["沈阳", "大连"] },
+  { province: "广东省", cities: ["广州"] },
+
+  { province: "山东省", cities: ["济南", "泰安", "烟台", "威海", "青岛"] },
+  { province: "江西省", cities: ["新余", "南昌", "鹰潭"] },
+  { province: "贵州省", cities: ["贵阳", "安顺", "黔东南"] },
+  { province: "浙江省", cities: ["杭州", "衢州"] },
+  { province: "山西省", cities: ["大同", "朔州"] },
+  { province: "河北省", cities: ["承德"] },
+  { province: "广西壮族自治区", cities: ["南宁", "柳州", "崇左"] },
+  { province: "福建省", cities: ["福州"] },
+  { province: "湖南省", cities: ["长沙", "岳阳", "衡阳"] },
+  { province: "四川省", cities: ["成都", "资阳"] },
+  { province: "云南省", cities: ["昆明", "西双版纳", "大理", "丽江", "迪庆"] },
+  { province: "新疆维吾尔自治区", cities: ["乌鲁木齐"] },
+
+  // ✅ 新增
+  { province: "河南省", cities: ["洛阳"] },
+];
+
+// ✅ 所有照片统一放到底部（原图呈现：不裁切）
+// 你这批图基本是一省一张（重庆两张）
+const gallery = [
+  { province: "河南省", caption: "洛阳 · 龙门石窟", src: "/henan.JPG" },
+  { province: "云南省", caption: "迪庆 · 梅里雪山", src: "/yunnan.JPG" },
+  { province: "陕西省", caption: "渭南 · 华山", src: "/shaanxi.JPG" },
+  { province: "四川省", caption: "资阳 · 毗卢洞", src: "/sichuan.JPG" },
+  { province: "辽宁省", caption: "大连 · 星海湾大桥", src: "/liaoning.JPG" },
+  { province: "山西省", caption: "大同 · 悬空寺", src: "/shanxi.JPG" },
+  { province: "重庆市", caption: "重庆 · 武隆天坑", src: "/chongqing1.JPG" },
+  { province: "重庆市", caption: "重庆 · 夔门", src: "/chongqing2.JPG" },
+  { province: "贵州省", caption: "贵州 · 黄果树瀑布", src: "/guizhou.JPG" },
+   { province: "山东省", caption: "烟台 · 孤独的鲸", src: "/shandong.JPG" },
+  { province: "江西省", caption: "鹰潭 · 龙虎山", src: "/jiangxi.JPG" },
+  { province: "云南省", caption: "迪庆 · 普达措", src: "/diqing.JPG" },
+  { province: "云南省", caption: "迪庆 · 松赞林寺", src: "/temple.JPG" },
+];
+
+// 统计
+const provinceCount = trips.length;
+const cityCount = trips.reduce((s, t) => s + t.cities.length, 0);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-text">
+          <div class="kicker">旅行日志</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+
+          <div class="meta-row">
+            <span class="meta-pill">省级足迹 {provinceCount}</span>
+            <span class="meta-pill">城市 {cityCount}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <ol class="grid">
+          {trips.map((t, idx) => (
+            <li class="card">
+              <div class="badge">{idx + 1}</div>
+
+              <div class="body">
+                <div class="name-row">
+                  <div class="province-name">{t.province}</div>
+                  <div class="chips">
+                    <span class="chip">{t.cities.length} 城市</span>
+                  </div>
+                </div>
+
+                <div class="cities">{t.cities.join("、")}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ✅ 全部照片统一放最底下 */}
+      <section class="panel gallery-panel">
+        <div class="gallery-head">
+          <div class="gallery-title">照片</div>
+          <div class="gallery-sub">原图呈现 · 按画册方式排布</div>
+        </div>
+
+        <div class="gallery">
+          {gallery.map((p) => (
+            <figure class="shot">
+              <img src={p.src} alt={p.caption} loading="lazy" />
+              <figcaption class="cap">{p.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      :root{
+        --bg:#fff;
+        --card:#f5f5f5;
+        --chip-bg:#fff;
+        --chip-border:#e7e7e7;
+        --border:#e5e5e5;
+        --ink:#111;
+        --muted:#777;
+        --muted2:#666;
+        --shadow: rgba(0,0,0,0.06);
+      }
+
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .page{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 40px 20px 70px;
+      }
+
+      .top-actions{ display:flex; justify-content:flex-start; margin-bottom:16px; }
+      .back-home{
+        text-decoration:none;
+        font-size:14px;
+        padding:6px 10px;
+        border-radius:10px;
+        color: var(--muted);
+      }
+      .back-home:hover{ background:#f0f0f0; color: var(--ink); }
+
+      .hero{ margin-top: 4px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size: clamp(34px, 5vw, 54px); margin: 8px 0 0; }
+      .subtitle{ color: var(--muted); margin-top: 10px; }
+
+      .meta-row{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+      .meta-pill{
+        font-size:12px;
+        color:#555;
+        background:#fafafa;
+        border:1px solid var(--border);
+        padding:6px 10px;
+        border-radius:999px;
+      }
+
+      .panel{ margin-top: 28px; }
+
+      .grid{
+        list-style:none;
+        padding:0;
+        display:grid;
+        gap:10px;
+      }
+
+      .card{
+        display:grid;
+        grid-template-columns:56px 1fr;
+        gap:14px;
+        padding:14px;
+        background: var(--card);
+        border-radius:14px;
+      }
+
+      .badge{
+        font-weight:700;
+        opacity:.85;
+        line-height:1;
+        padding-top:2px;
+      }
+
+      .body{ display:grid; gap:10px; min-width:0; }
+
+      .name-row{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        min-width:0;
+      }
+
+      .province-name{
+        font-weight:650;
+        font-size:16px;
+        min-width:0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+
+      .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+      .chip{
+        font-size:12px;
+        color:#555;
+        background: var(--chip-bg);
+        border:1px solid var(--chip-border);
+        padding:4px 8px;
+        border-radius:999px;
+      }
+
+      .cities{ color:#333; line-height:1.65; }
+
+      /* ===== 底部画册式相册 ===== */
+      .gallery-panel{
+        background: var(--card);
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .gallery-head{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        padding: 2px 2px 10px;
+      }
+
+      .gallery-title{
+        font-weight:650;
+        font-size:16px;
+      }
+
+      .gallery-sub{
+        font-size:12px;
+        color: var(--muted);
+      }
+
+      /* 关键：两列“画册”流式排布，大图保持原比例（不裁切） */
+      .gallery{
+        column-count: 2;
+        column-gap: 10px;
+      }
+
+      .shot{
+        margin: 0 0 10px;
+        display: inline-block;
+        width: 100%;
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 22px var(--shadow);
+        break-inside: avoid;
+      }
+
+      /* 原图呈现：不裁切，不强制高度 */
+      .shot img{
+        width: 100%;
+        height: auto;
+        display:block;
+        object-fit: contain;
+        background: #fff;
+      }
+
+      .cap{
+        padding: 10px 12px 12px;
+        font-size: 12px;
+        color: var(--muted2);
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+
+      @media (max-width: 860px){
+        .gallery{ column-count: 1; }
+      }
+
+      @media (max-width: 520px){
+        .card{ grid-template-columns:44px 1fr; }
+        .gallery-head{ flex-direction:column; align-items:flex-start; gap:6px; }
+      }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid var(--border);
+        text-align:center;
+        color: var(--muted);
+        font-size:14px;
+      }
+    </style>
+  </body>
+</html>

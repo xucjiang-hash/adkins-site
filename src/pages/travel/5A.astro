@@ -1,0 +1,257 @@
+---
+const pageTitle = "国内 5A 足迹";
+const subtitle = "5A 景区清单 · 按省份整理";
+
+const spots = [
+  {
+    province: "天津市",
+    items: ["天津古文化街旅游区（津门故里）"],
+  },
+  {
+    province: "河北省",
+    items: ["承德市承德避暑山庄及周围寺庙景区"],
+  },
+  {
+    province: "山西省",
+    items: ["大同市云冈石窟景区"],
+  },
+  {
+    province: "辽宁省",
+    items: ["大连市金石滩景区"],
+  },
+  {
+    province: "江苏省",
+    items: ["苏州市周庄古镇景区", "苏州市苏州园林（拙政园－留园－虎丘）"],
+  },
+  {
+    province: "浙江省",
+    items: ["杭州市杭州西湖风景区"],
+  },
+  {
+    province: "福建省",
+    items: ["福州市三坊七巷景区"],
+  },
+  {
+    province: "江西省",
+    items: ["南昌市东湖区滕王阁旅游区", "鹰潭市贵溪市龙虎山风景名胜区"],
+  },
+  {
+    province: "山东省",
+    items: ["泰安市泰山景区", "烟台市蓬莱阁-三仙山-八仙过海旅游区", "青岛市崂山景区"],
+  },
+  {
+    province: "河南省",
+    items: ["洛阳市龙门石窟景区"],
+  },
+  {
+    province: "湖南省",
+    items: ["长沙市岳麓山-橘子洲旅游区", "衡阳市衡山旅游区", "岳阳市岳阳楼－君山岛景区"],
+  },
+  {
+    province: "广西壮族自治区",
+    items: ["崇左市德天跨国瀑布景区"],
+  },
+  {
+    province: "重庆市",
+    items: ["大足石刻景区", "小三峡－小小三峡旅游区", "白帝城•瞿塘峡景区", "喀斯特旅游区"],
+  },
+  {
+    province: "贵州省",
+    items: ["安顺市黄果树瀑布景区", "安顺市西秀区龙宫景区", "黔东南州镇远县镇远古城旅游景区", "黔南布依族苗族自治州荔波县樟江景区"],
+  },
+  {
+    province: "云南省",
+    items: [
+      "昆明市石林风景区",
+      "丽江市玉龙雪山景区",
+      "丽江市丽江古城景区",
+      "大理州崇圣寺三塔文化旅游区",
+      "昆明市昆明世博园景区",
+      "迪庆州普达措国家公园",
+      "西双版纳州中科院西双版纳热带植物园",
+    ],
+  },
+  {
+    province: "陕西省",
+    items: ["渭南市华山风景区", "西安市大雁塔－大唐芙蓉园景区", "西安市秦始皇帝陵博物院景区"],
+  },
+];
+
+const provinceCount = spots.length;
+const spotCount = spots.reduce((s, p) => s + p.items.length, 0);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-text">
+          <div class="kicker">旅行日志</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+
+          <div class="meta-row">
+            <span class="meta-pill">省级 {provinceCount}</span>
+            <span class="meta-pill">5A 条目 {spotCount}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <ol class="grid">
+          {spots.map((p, idx) => (
+            <li class="card">
+              <div class="badge">{idx + 1}</div>
+
+              <div class="body">
+                <div class="name-row">
+                  <div class="province-name">{p.province}</div>
+                  <div class="chips">
+                    <span class="chip">{p.items.length} 条</span>
+                  </div>
+                </div>
+
+                <div class="items">{p.items.join("；")}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      :root{
+        --bg:#fff;
+        --card:#f5f5f5;
+        --chip-bg:#fff;
+        --chip-border:#e7e7e7;
+        --border:#e5e5e5;
+        --ink:#111;
+        --muted:#777;
+        --muted2:#666;
+      }
+
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .page{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 40px 20px 70px;
+      }
+
+      .top-actions{ display:flex; justify-content:flex-start; margin-bottom:16px; }
+      .back-home{
+        text-decoration:none;
+        font-size:14px;
+        padding:6px 10px;
+        border-radius:10px;
+        color: var(--muted);
+      }
+      .back-home:hover{ background:#f0f0f0; color: var(--ink); }
+
+      .hero{ margin-top: 4px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size: clamp(34px, 5vw, 54px); margin: 8px 0 0; }
+      .subtitle{ color: var(--muted); margin-top: 10px; }
+
+      .meta-row{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+      .meta-pill{
+        font-size:12px;
+        color:#555;
+        background:#fafafa;
+        border:1px solid var(--border);
+        padding:6px 10px;
+        border-radius:999px;
+      }
+
+      .panel{ margin-top: 28px; }
+
+      .grid{
+        list-style:none;
+        padding:0;
+        display:grid;
+        gap:10px;
+      }
+
+      .card{
+        display:grid;
+        grid-template-columns:56px 1fr;
+        gap:14px;
+        padding:14px;
+        background: var(--card);
+        border-radius:14px;
+      }
+
+      .badge{
+        font-weight:700;
+        opacity:.85;
+        line-height:1;
+        padding-top:2px;
+      }
+
+      .body{ display:grid; gap:10px; min-width:0; }
+
+      .name-row{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:12px;
+        min-width:0;
+      }
+
+      .province-name{
+        font-weight:650;
+        font-size:16px;
+        min-width:0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+
+      .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+      .chip{
+        font-size:12px;
+        color:#555;
+        background: var(--chip-bg);
+        border:1px solid var(--chip-border);
+        padding:4px 8px;
+        border-radius:999px;
+      }
+
+      .items{
+        color:#333;
+        line-height:1.75;
+        word-break: break-word;
+      }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid var(--border);
+        text-align:center;
+        color: var(--muted);
+        font-size:14px;
+      }
+    </style>
+  </body>
+</html>

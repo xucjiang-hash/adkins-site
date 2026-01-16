@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const awards = await getCollection("adkins");
+  return awards.map((a) => ({
+    params: { slug: a.slug },
+    props: { a },
+  }));
+}
+
+const { a } = Astro.props;
+const { Content } = await a.render();
+
+const h = a.data.highlights ?? {};
+const highlightsRows = [
+  h.best_picture ? `最佳影片：${h.best_picture}` : null,
+  h.best_director ? `最佳导演：${h.best_director}` : null,
+  h.best_actor ? `最佳男主：${h.best_actor}` : null,
+  h.best_actress ? `最佳女主：${h.best_actress}` : null,
+].filter(Boolean);
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{a.data.year}（第 {a.data.edition} 届）</title>
+  </head>
+
+  <body style="font-family: system-ui; padding: 48px; line-height: 1.7;">
+    <p style="margin: 0 0 12px;"><a href="/adkins">← 返回历届</a></p>
+
+    <h1 style="margin: 0 0 8px;">
+      {a.data.year}（第 {a.data.edition} 届）
+    </h1>
+
+    <p style="margin: 0 0 20px; opacity: 0.8;">
+      {a.data.theme ? `主题：${a.data.theme}` : ""}
+      {a.data.theme && a.data.date ? " · " : ""}
+      {a.data.date ? `日期：${a.data.date}` : ""}
+    </p>
+
+    {highlightsRows.length > 0 && (
+      <div style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; margin-bottom: 24px;">
+        <strong>本届要点</strong>
+        <ul style="margin: 8px 0 0; padding-left: 18px;">
+          {highlightsRows.map((txt) => <li>{txt}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <article>
+      <Content />
+    </article>
+  </body>
+</html>
+

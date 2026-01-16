@@ -1,0 +1,147 @@
+---
+const year = "2021";
+
+const books = [
+  "【波兰】奥尔加·托卡尔丘克《太古和其他的时间》（2017四川人民出版社）",
+  "【葡萄牙】若泽·萨拉马戈《失明症漫记》（2014南海出版公司）",
+  "【哥伦比亚】加西亚·马尔克斯《一桩事先声张的凶杀案》（2013南海出版公司）",
+  "【意大利】达里奥·福《一个无政府主义者的意外死亡》（2016上海译文出版社）",
+  "【德国】赫尔曼·黑塞《悉达多》（2019湖南文艺出版社）",
+  "【英国】T·S·艾略特《荒原》（2012上海译文出版社）",
+  "【韩国】李沧东《鹿川有许多粪》（2021武汉大学出版社）",
+  "【英国】石黑一雄《长日将尽》（2018上海译文出版社）",
+  "【智利】聂鲁达《二十首情诗与绝望的歌》（2003中国社会科学出版社）",
+  "【中国】白先勇《台北人》（2015广西师范大学出版社）",
+  "【俄国】伊凡·蒲宁《林荫幽静》（2019漓江出版社）",
+  "【波兰】维斯拉瓦·辛波斯卡《万物静默如谜》（2016湖南文艺出版社）",
+  "【法国】迪迪埃·埃里蓬《回归故里》（2020上海人民出版社）",
+  "【中国】李娟《阿勒泰的角落》（2013新星出版社）",
+  "【叙利亚】阿多尼斯《我的孤独是一座花园》（2009译林出版社）",
+  "【美国】乔治·帕克《下沉年代》（2021文汇出版社）",
+  "【中国】李娟《冬牧场》（2012新星出版社）",
+  "【美国】约翰·威廉斯《奥古斯都》（2018上海人民出版社）",
+  "【美国】特德·姜《呼吸》（2019译林出版社）",
+  "【中国】白先勇《树犹如此》（2018湖南文艺出版社）",
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{year} · 年度书单</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <a href="/" class="back-home">← 返回主页</a>
+
+      <header class="hero">
+        <div class="kicker">年度书单</div>
+        <h1 class="title">{year}</h1>
+        <p class="subtitle">阅读记录与推荐</p>
+      </header>
+
+      <section class="panel">
+        <ol class="list">
+          {books.map((item) => (
+            <li class="card">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="text">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      .page { max-width: 980px; margin: 0 auto; padding: 56px 20px 72px; }
+      .hero { margin-bottom: 26px; }
+      .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+      .title { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+      .subtitle { margin: 12px 0 0; font-size: 16px; line-height: 1.7; opacity: 0.72; }
+
+      .panel {
+        margin-top: 22px;
+        border-radius: 18px;
+        padding: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+      .card {
+        display: grid;
+        grid-template-columns: 10px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(0,0,0,0.18);
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255,255,255,0.16);
+        background: rgba(0,0,0,0.26);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        margin-top: 8px;
+        background: rgba(255,255,255,0.55);
+      }
+
+      .text {
+        font-size: 16px;
+        line-height: 1.85;
+        opacity: 0.92;
+        word-break: break-word;
+      }
+
+      .footnote {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255,255,255,0.10);
+        opacity: 0.75;
+      }
+
+      .line { font-size: 14px; letter-spacing: 0.02em; }
+
+      .back-home{
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #777;
+        padding: 6px 10px;
+        border-radius: 10px;
+        transition: background 120ms ease, color 120ms ease;
+      }
+
+      .back-home:hover{
+        background: #f0f0f0;
+        color: #111;
+      }
+
+      @media (max-width: 520px) {
+        .page { padding: 42px 16px 60px; }
+        .panel { padding: 12px; }
+        .card { padding: 12px; border-radius: 12px; }
+        .text { font-size: 15px; line-height: 1.8; }
+      }
+    </style>
+  </body>
+</html>
