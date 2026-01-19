@@ -1,0 +1,11 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+const html = fs.readFileSync(
+  path.resolve('./public/cms/index.html'),
+  'utf-8'
+);
+---
+
+<Fragment set:html={html} />
