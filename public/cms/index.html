@@ -1,11 +1,24 @@
-<link href="config.yml" type="text/yaml" rel="cms-config-url">
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理后台</title>
+    <script>
+      window.CMS_CONFIG = {
+        backend: {
+          name: 'github',
+          repo: 'xucjiang-hash/adkins-site',
+          branch: 'main',
+          auth_type: 'implicit',
+          client_id: 'Ov23lipA8l2tVtbe5P9o' 
+        },
+        local_backend: false,
+        display_url: "https://adkins-site.pages.dev",
+      };
+    </script>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
