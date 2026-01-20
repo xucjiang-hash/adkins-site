@@ -1,4 +1,7 @@
 ---
-title: "ces "
+
+title: 欢迎
 ---
-ceshi
+
+这是通过 Decap CMS 管理的内容。
+
