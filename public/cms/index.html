@@ -2,7 +2,6 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理后台</title>
     <script>
       window.CMS_CONFIG = {
@@ -15,6 +14,26 @@
         },
         local_backend: false,
         display_url: "https://adkins-site.pages.dev",
+        media_folder: "public/uploads",
+        public_folder: "/uploads",
+        // 必须包含 collections，否则会报 forEach 错误
+        collections: [
+          {
+            name: "home",
+            label: "首页内容",
+            files: [
+              {
+                file: "src/content/home.md",
+                label: "首页",
+                name: "home",
+                fields: [
+                  { label: "标题", name: "title", widget: "string" },
+                  { label: "正文", name: "body", widget: "markdown" }
+                ]
+              }
+            ]
+          }
+        ]
       };
     </script>
   </head>
