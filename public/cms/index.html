@@ -20,17 +20,16 @@
           },
           local_backend: false,
           display_url: "https://adkins-site.pages.dev",
-          media_folder: "public/uploads",
-          public_folder: "/uploads",
+          // 这里的名称必须保证在整个 config 对象中唯一
           collections: [
             {
-              name: "home",
+              name: "home_page", // 修改了 name，避免与潜在的旧配置冲突
               label: "首页内容",
               files: [
                 {
                   file: "src/content/home.md",
-                  label: "首页",
-                  name: "home",
+                  label: "主页设置",
+                  name: "home_fields", // 内部名称也做了微调
                   fields: [
                     { label: "标题", name: "title", widget: "string" },
                     { label: "正文", name: "body", widget: "markdown" }
