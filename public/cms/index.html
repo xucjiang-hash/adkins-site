@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <title>内容管理后台</title>
-    <script>window.CMS_MANUAL_INIT = true;</script>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    
     <script>
+      // 这里的初始化配置必须严格遵守 Decap CMS 的 Schema
       CMS.init({
         config: {
           backend: {
@@ -16,20 +18,21 @@
             repo: 'xucjiang-hash/adkins-site',
             branch: 'main',
             auth_type: 'implicit',
-            client_id: 'Ov23lipA8l2tVtbe5P9o' 
+            client_id: 'Ov23lipA8l2tVtbe5P9o'
           },
-          local_backend: false,
           display_url: "https://adkins-site.pages.dev",
-          // 这里的名称必须保证在整个 config 对象中唯一
+          // 必须在这里定义，不能漏掉
+          media_folder: "public/uploads",
+          public_folder: "/uploads",
           collections: [
             {
-              name: "home_page", // 修改了 name，避免与潜在的旧配置冲突
+              name: "home_page",
               label: "首页内容",
               files: [
                 {
                   file: "src/content/home.md",
                   label: "主页设置",
-                  name: "home_fields", // 内部名称也做了微调
+                  name: "home_fields",
                   fields: [
                     { label: "标题", name: "title", widget: "string" },
                     { label: "正文", name: "body", widget: "markdown" }
