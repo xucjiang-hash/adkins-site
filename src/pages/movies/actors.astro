@@ -450,7 +450,7 @@ const actors = [
   {
     rank: 33,
     name: "罗素·克劳",
-    region: "澳大利亚",
+    region: "新西兰",
     count: 18,
     records: [
       "耐撕侦探","悲惨世界","角斗士","美国黑帮","谎言之躯","洛城机密","新木乃伊","危情三日","铁拳男人","美丽心灵",
@@ -517,7 +517,7 @@ const actors = [
   {
     rank: 38,
     name: "凯特·布兰切特",
-    region: "澳大利亚",
+    region: "澳大利亚 / 美国",
     count: 17,
     records: [
       "蓝色茉莉","本杰明·巴顿奇事","指环王1:护戒使者","指环王2:双塔奇兵","指环王3:王者无敌",
@@ -587,7 +587,7 @@ const actors = [
   {
     rank: 43,
     name: "连姆·尼森",
-    region: "爱尔兰",
+    region: "爱尔兰 / 英国",
     count: 16,
     records: [
       "辛德勒的名单","真爱至上","蝙蝠侠：黑暗骑士崛起","蝙蝠侠：侠影之谜","飓风营救","空中营救",
@@ -669,7 +669,7 @@ const actors = [
   {
     rank: 49,
     name: "杨紫琼",
-    region: "马来西亚 / 中国香港",
+    region: "马来西亚",
     count: 15,
     records: [
       "宋家皇朝","警察故事3：超级警察","魔法坏女巫","魔法坏女巫2","东方三侠","艺伎回忆录",
@@ -699,7 +699,7 @@ const actors = [
 ];
 
 const quoteWrap = (title: string) => `《${title}》`;
-const renderRecords = (arr: string[]) => arr.map(quoteWrap).join("、");
+const renderRecords = (arr: string[]) => arr.map(quoteWrap).join("");
 ---
 
 <!doctype html>
@@ -718,7 +718,7 @@ const renderRecords = (arr: string[]) => arr.map(quoteWrap).join("、");
 
       <header class="hero">
         <div class="hero-img">
-          <img src="/actors.webp" alt="演员 Top 50" />
+          <img src="/andy.jpg" alt="演员 Top 50" />
         </div>
 
         <div class="hero-text">
