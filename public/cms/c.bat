@@ -2,7 +2,8 @@ backend:
   name: github
   repo: xucjiang-hash/adkins-site
   branch: main
-  auth_type: implicit
+  base_url: https://adkins-site.pages.dev
+  auth_endpoint: api/auth
 
 
 local_backend: false
