@@ -1,0 +1,343 @@
+---
+const pageTitle = "第五届 Brian-Adkins Award";
+const subtitle = "获奖与年度观影推荐";
+
+// 海报
+const heroImg = "/obaa.webp";
+
+// ---------------------------
+// 1) 获奖名单
+// ---------------------------
+const awards = [
+  {
+    section: "金果奖",
+    items: [
+      { label: "最佳影片", value: "《一战再战》" },
+      { label: "终身成就（荣誉金果）", value: "马丁·斯科塞斯 / 伊莎贝尔·于佩尔" },
+    ],
+  },
+  {
+    section: "银果奖",
+    items: [
+      { label: "评审团大奖", value: "《F1：狂飙飞车》" },
+      { label: "评委会奖", value: "《火车梦》" },
+      { label: "最佳导演", value: "保罗·托马斯·安德森（《一战再战》）" },
+      { label: "最佳新人导演", value: "林金伟（《有用的鬼》）" },
+    ],
+  },
+  {
+    section: "地平线奖",
+    items: [
+      { label: "最佳动画片", value: "《浪浪山小妖怪》" },
+      { label: "最佳纪录片", value: "《距安德烈夫卡2000米》" },
+      { label: "最佳国际影片", value: "《天空的另一面》" },
+      { label: "人道主义精神奖", value: "《妥瑞氏与我》" },
+      { label: "费比西奖", value: "《唯有追忆》" },
+      { label: "酷儿电影荣誉特别提及", value: "《弗拉明戈的神秘眼神》" },
+    ],
+  },
+  {
+    section: "史蒂芬妮杯",
+    items: [
+      { label: "最佳男主角", value: "罗伯特·阿拉马约（《妥瑞氏与我》）" },
+      { label: "最佳男配角", value: "梁家辉（《捕风追影》）" },
+      { label: "最佳女主角", value: "辛芷蕾（《日掛中天》）/ 朱迪·科默（《初步举证》）" },
+      { label: "最佳女配角", value: "格伦·克洛斯（《利刃出鞘3》）" },
+    ],
+  },
+  {
+    section: "编剧大奖",
+    items: [
+      { label: "最佳原创剧本", value: "《有用的鬼》" },
+      { label: "最佳改编剧本", value: "《一战再战》" },
+    ],
+  },
+  {
+    section: "金摄影机奖",
+    items: [
+      { label: "最佳摄影", value: "《一战再战》" },
+      { label: "最佳剪辑", value: "《一战再战》" },
+    ],
+  },
+  {
+    section: "视觉大奖",
+    items: [
+      { label: "最佳视觉效果", value: "《F1：狂飙飞车》" },
+      { label: "最佳艺术指导", value: "《狂野时代》" },
+      { label: "最佳化妆与发型设计", value: "《弗兰肯斯坦》" },
+      { label: "最佳服装设计", value: "《弗兰肯斯坦》" },
+    ],
+  },
+  {
+    section: "听觉大奖",
+    items: [
+      { label: "最佳声音效果", value: "《F1：狂飙飞车》" },
+      { label: "最佳原创配乐", value: "《F1：狂飙飞车》" },
+      {
+        label: "最佳电影歌曲",
+        value:
+          "Don Toliver / Doja Cat<br />《Lose My Mind》（《F1：狂飙飞车》）",
+      },
+    ],
+  },
+];
+
+// ---------------------------
+// 2) 一种关注：国产院线特别贡献单元
+// ---------------------------
+const specialFocus = {
+  title: "一种关注：国产院线特别贡献单元",
+  rows: [
+    {
+      label: "年度关注电影",
+      value:
+        "《但愿人长久》《长安的荔枝》《南京照相馆》《捕风追影》《罗小黑战记2》《浪浪山小妖怪》《日掛中天》《狂野时代》《女孩》",
+    },
+    { label: "年度关注导演", value: "毕赣" },
+    { label: "年度关注演员", value: "辛芷蕾" },
+  ],
+};
+
+// ---------------------------
+// 3) 主竞赛入围名单暨年度观影推荐
+// ---------------------------
+const shortlistIntro = {
+  title: "主竞赛入围名单暨年度观影推荐",
+  range: "选片范围：2025年中国大陆及美国院线上映电影及2025年发行的全球各国电影",
+};
+
+const shortlist = [
+  { country: "美国", director: "赵婷", title: "《哈姆奈特》" },
+  { country: "美国", director: "保罗·托马斯·安德森", title: "《一战再战》" },
+  { country: "美国", director: "雪梨·道比什", title: "《唯有追忆》" },
+  { country: "巴西", director: "加布里埃尔·马斯卡罗", title: "《天空的另一面》" },
+  { country: "美国", director: "约瑟夫·科辛斯基", title: "《F1: 狂飙飞车》" },
+  { country: "中国大陆", director: "蔡尚君", title: "《日掛中天》" },
+  { country: "日本", director: "矢口史靖", title: "《人偶之家》" },
+  { country: "美国", director: "克林特·本特利", title: "《火车梦》" },
+  { country: "韩国", director: "朴赞郁", title: "《无可奈何》" },
+  { country: "中国大陆", director: "毕赣", title: "《狂野时代》" },
+  { country: "泰国", director: "林金伟", title: "《有用的鬼》" },
+  { country: "法国", director: "茱莉亚·迪库诺", title: "《阿尔法》" },
+  { country: "韩国", director: "朴俊浩", title: "《3670》" },
+  { country: "中国大陆", director: "杨子", title: "《捕风追影》" },
+  { country: "中国台湾", director: "邹时擎", title: "《左撇子女孩》" },
+  { country: "希腊", director: "欧格斯·兰斯莫斯", title: "《拯救地球》" },
+  { country: "巴西", director: "沃尔特·塞勒斯", title: "《我仍在此》" },
+  { country: "英国", director: "柯克·琼斯", title: "《妥瑞氏与我》" },
+  { country: "西班牙", director: "奥利维尔·拉克谢", title: "《接近终点》" },
+  { country: "中国香港", director: "黄修平", title: "《看我今天怎么说》" },
+  { country: "日本", director: "李相日", title: "《国宝》" },
+  { country: "巴西", director: "小克莱伯·门多萨", title: "《密探》" },
+  { country: "日本", director: "空音央", title: "《昨日青春》" },
+  { country: "中国大陆", director: "秦天", title: "《但愿人长久》" },
+  { country: "挪威", director: "达格·约翰·豪格鲁德", title: "《性梦爱三部曲：梦》" },
+  { country: "美国", director: "杰拉德·布什 / 拜伦·霍华德", title: "《疯狂动物城2》" },
+  { country: "墨西哥", director: "吉尔莫·德尔·托罗", title: "《弗兰肯斯坦》" },
+  { country: "丹麦", director: "约阿希姆·提尔", title: "《情感价值》" },
+  { country: "日本", director: "冢原亚由子", title: "《初吻》" },
+  { country: "乌克兰", director: "姆斯蒂斯拉夫·切尔诺夫", title: "《距安德烈夫卡2000米》" },
+  { country: "意大利", director: "宝拉·柯特莱西", title: "《还有明天》" },
+  { country: "美国", director: "乔什·萨弗迪", title: "《至尊马蒂》" },
+  { country: "智利", director: "迭戈·塞斯佩德斯", title: "《弗拉明戈的神秘眼神》" },
+  { country: "法国", director: "伊娃·维克托", title: "《对不起，宝贝》" },
+  { country: "伊朗", director: "贾法·帕纳西", title: "《普通事故》" },
+  { country: "以色列", director: "那达夫·拉皮德", title: "《是的》" },
+  { country: "德国", director: "克里斯蒂安·佩措尔德", title: "《镜的第三乐章》" },
+  { country: "加拿大", director: "大卫·柯南伯格", title: "《裹尸布》" },
+  { country: "法国", director: "埃莱娜·卡泰 / 布鲁诺·福扎尼", title: "《死钻倒影》" },
+  { country: "韩国", director: "洪尚秀", title: "《大自然对你说了什么》" },
+];
+
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="top-actions">
+        <a class="back-home" href="/">← 返回主页</a>
+      </div>
+
+      <header class="hero">
+        <div class="hero-img">
+          <img src={heroImg} alt={pageTitle} />
+        </div>
+
+        <div class="hero-text">
+          <div class="kicker">Brian-Adkins Awards</div>
+          <h1 class="title">{pageTitle}</h1>
+          <p class="subtitle">{subtitle}</p>
+        </div>
+      </header>
+
+      {/* 竖排布局：获奖名单 -> 入围名单 */}
+      <section class="stack">
+        {/* 获奖名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">获奖名单</h2>
+          </div>
+
+          <div class="award-grid">
+            {awards.map((block) => (
+              <section class="card">
+                <h3 class="card-title">{block.section}</h3>
+                <div class="kv">
+                  {block.items.map((it) => (
+                    <div class="kv-row">
+                      <div class="kv-k">{it.label}</div>
+                      <div class="kv-v" title={it.value} set:html={it.value} />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{specialFocus.title}</h3>
+            <div class="kv">
+              {specialFocus.rows.map((r) => (
+  <div class="kv-row">
+    <div class="kv-k">{r.label}</div>
+    <div class="kv-v" title={r.value} set:html={r.value} />
+  </div>
+))}
+            </div>
+          </section>
+        </div>
+
+        {/* 入围名单 */}
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">主竞赛名单</h2>
+          </div>
+
+          <section class="card wide">
+            <h3 class="card-title">{shortlistIntro.title}</h3>
+            <div class="muted">{shortlistIntro.range}</div>
+
+            <ol class="pick-list">
+              {shortlist.map((p, idx) => (
+                <li class="pick-item">
+                  <span class="pick-no">{idx + 1}.</span>
+                  <span class="pick-main" title={`【${p.country}】${p.director}${p.title}`}>
+                    <span class="pick-country">【{p.country}】</span>
+                    <span class="pick-text">{p.director}{p.title}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <span class="line">所谓生活，无非时间、空间和你。</span>
+      </footer>
+    </main>
+
+    <style>
+      body{ margin:0; font-family: system-ui,"PingFang SC","Microsoft YaHei",sans-serif; background:#fff; color:#111; }
+      .page{ max-width:980px; margin:0 auto; padding:40px 20px 70px; }
+
+      .top-actions{ display:flex; justify-content:space-between; margin-bottom:16px; }
+      .back-home{ text-decoration:none; font-size:14px; padding:6px 10px; border-radius:10px; color:#777; }
+      .back-home:hover{ background:#f0f0f0; color:#111; }
+
+      .hero-img img{ width:100%; border-radius:16px; border:1px solid #e5e5e5; display:block; }
+      .hero-text{ margin-top:20px; }
+      .kicker{ font-size:13px; letter-spacing:.14em; opacity:.6; }
+      .title{ font-size:clamp(34px,5vw,54px); margin:8px 0 0; }
+      .subtitle{ color:#777; margin-top:10px; }
+
+      .stack{ margin-top:26px; display:grid; grid-template-columns: 1fr; gap:14px; }
+
+      .panel{ background:#f6f6f6; border-radius:18px; padding:16px; }
+      .panel-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px; }
+      .panel-title{ margin:0; font-size:18px; letter-spacing:.02em; }
+
+      .award-grid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:12px;
+      }
+      @media (max-width: 860px){
+        .award-grid{ grid-template-columns:1fr; }
+      }
+
+      .card{
+        background:#fff;
+        border:1px solid #e8e8e8;
+        border-radius:14px;
+        padding:14px;
+      }
+      .card.wide{ margin-top:12px; }
+
+      .card-title{
+        margin:0 0 10px;
+        font-size:18px;
+        font-weight:750;
+        letter-spacing:.01em;
+      }
+
+      .kv{ display:grid; gap:8px; }
+      .kv-row{
+        display:grid;
+        grid-template-columns: 130px 1fr;
+        gap:12px;
+        align-items:baseline;
+      }
+      .kv-k{ color:#666; font-size:13px; white-space:nowrap; }
+      .kv-v{
+        color:#111;
+        font-size:13px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+
+      .muted{ color:#777; font-size:13px; margin-top:2px; }
+
+      .pick-list{
+        margin:12px 0 0;
+        padding:0;
+        list-style:none;
+        display:grid;
+        gap:10px;
+      }
+      .pick-item{
+        display:grid;
+        grid-template-columns: 34px 1fr;
+        gap:8px;
+        align-items:baseline;
+      }
+      .pick-no{ font-weight:700; color:#111; }
+      .pick-main{
+        font-size:14px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      .pick-country{ color:#666; margin-right:6px; }
+      .pick-text{ color:#111; }
+
+      .footnote{
+        margin-top:30px;
+        padding-top:18px;
+        border-top:1px solid #e5e5e5;
+        text-align:center;
+        color:#777;
+        font-size:14px;
+      }
+      .footnote .line{ display:block; }
+      .footnote .line.muted{ margin-top:6px; color:#999; }
+    </style>
+  </body>
+</html>
