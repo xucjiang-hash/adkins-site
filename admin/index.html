@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我们的后台 ❤️</title>
+</head>
+<body>
+
+<h2>修改网站内容</h2>
+
+标题：<br>
+<input id="title" style="width:300px"><br><br>
+
+描述：<br>
+<input id="desc" style="width:300px"><br><br>
+
+<button onclick="save()">保存</button>
+
+<p id="msg"></p>
+
+<script>
+const owner = "xucjiang-hash";
+const repo = "adkins-site";
+const filePath = "data/site.json";
+
+// ⚠️ 把这里换成你的 token
+const token = "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";
+
+async function load() {
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`);
+  const data = await res.json();
+  const content = JSON.parse(atob(data.content));
+
+  document.getElementById('title').value = content.title || "";
+  document.getElementById('desc').value = content.desc || "";
+
+  window.sha = data.sha;
+}
+
+load();
+
+async function save() {
+  const newData = {
+    title: document.getElementById('title').value,
+    desc: document.getElementById('desc').value
+  };
+
+  const content = btoa(JSON.stringify(newData, null, 2));
+
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+    method: "PUT",
+    headers: {
+      Authorization: "token " + token,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "update from admin",
+      content: content,
+      sha: window.sha
+    })
+  });
+
+  document.getElementById('msg').innerText = "✅ 保存成功！稍等网站更新";
+}
+</script>
+
+</body>
+</html>
