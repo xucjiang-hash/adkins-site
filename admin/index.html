@@ -66,3 +66,14 @@ async function save() {
 
 </body>
 </html>
+<h1 id="title"></h1>
+<p id="desc"></p>
+
+<script>
+fetch('/data/site.json')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('title').innerText = data.title;
+    document.getElementById('desc').innerText = data.desc;
+  });
+</script>
