@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我们的后台 ❤️</title>
+</head>
+<body>
+
+<h2>修改网站内容</h2>
+
+标题：<br>
+<input id="title" style="width:300px"><br><br>
+
+描述：<br>
+<input id="desc" style="width:300px"><br><br>
+
+<button onclick="save()">保存</button>
+
+<p id="msg"></p>
+
+<script>
+const owner = "xucjiang-hash";
+const repo = "adkins-site";
+const filePath = "data/site.json";
+
+// ⚠️ 强烈建议你马上删掉旧 token（后面我说）
+const token = "这里先清空";
+
+async function load() {
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`);
+  const data = await res.json();
+  const content = JSON.parse(atob(data.content));
+
+  document.getElementById('title').value = content.title || "";
+  document.getElementById('desc').value = content.desc || "";
+
+  window.sha = data.sha;
+}
+
+load();
+
+async function save() {
+  alert("先确认页面能打开，再加保存功能");
+}
+</script>
+
+</body>
+</html>
