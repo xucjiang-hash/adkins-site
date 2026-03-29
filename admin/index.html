@@ -23,8 +23,8 @@ const owner = "xucjiang-hash";
 const repo = "adkins-site";
 const filePath = "data/site.json";
 
-// ⚠️ 把这里换成你的 token
-const token = "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";
+// ⚠️ 强烈建议你马上删掉旧 token（后面我说）
+const token = "这里先清空";
 
 async function load() {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`);
@@ -40,40 +40,9 @@ async function load() {
 load();
 
 async function save() {
-  const newData = {
-    title: document.getElementById('title').value,
-    desc: document.getElementById('desc').value
-  };
-
-  const content = btoa(JSON.stringify(newData, null, 2));
-
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
-    method: "PUT",
-    headers: {
-      Authorization: "token " + token,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "update from admin",
-      content: content,
-      sha: window.sha
-    })
-  });
-
-  document.getElementById('msg').innerText = "✅ 保存成功！稍等网站更新";
+  alert("先确认页面能打开，再加保存功能");
 }
 </script>
 
 </body>
 </html>
-<h1 id="title"></h1>
-<p id="desc"></p>
-
-<script>
-fetch('/data/site.json')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('title').innerText = data.title;
-    document.getElementById('desc').innerText = data.desc;
-  });
-</script>
